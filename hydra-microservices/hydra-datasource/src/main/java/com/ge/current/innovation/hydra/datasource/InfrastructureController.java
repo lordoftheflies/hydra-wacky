@@ -7,11 +7,13 @@ package com.ge.current.innovation.hydra.datasource;
 
 import org.geojson.Feature;
 import org.geojson.FeatureCollection;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  *
  * @author lordoftheflies
  */
+@RestController
 public class InfrastructureController {
 
     public FeatureCollection siteGeoJson(String assetId) {
