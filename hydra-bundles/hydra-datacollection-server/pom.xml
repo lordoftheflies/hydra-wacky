@@ -1,0 +1,100 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.ge.lighting</groupId>
+        <artifactId>hydra-machine</artifactId>
+        <version>0.0.1</version>
+    </parent>
+
+    <artifactId>hydra-datacollection-server</artifactId>
+    <packaging>bundle</packaging>
+    <name>Hydra Machine Datacollection Service</name>
+	
+    <dependencies>
+
+        <!-- OSGi -->
+        <dependency>
+            <groupId>org.osgi</groupId>
+            <artifactId>org.osgi.core</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.osgi</groupId>
+            <artifactId>org.osgi.compendium</artifactId>
+            <scope>provided</scope>
+        </dependency>	
+				
+        <!-- Logging -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+		
+        <!-- Predix Machine -->
+
+        <dependency>
+            <groupId>javax.ws.rs</groupId>
+            <artifactId>javax.ws.rs-api</artifactId>
+        </dependency>
+        
+
+        <!-- DS Annotation Dependency -->
+        <dependency>
+            <groupId>biz.aQute.bnd</groupId>
+            <artifactId>bndlib</artifactId>
+            <scope>compile</scope>
+        </dependency>
+		
+        <!-- Java Websocket API Dependency -->
+        <dependency>
+            <groupId>javax.websocket</groupId>
+            <artifactId>javax.websocket-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>hydra-m2m-common</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>hydra-dataingestion-mq</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
+	
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <extensions>true</extensions>
+                <configuration>
+                    <instructions>
+                        <Bundle-SymbolicName>${project.groupId}.${project.artifactId}</Bundle-SymbolicName>
+                        <Bundle-Version>${project.version}</Bundle-Version>
+                        <Import-Package>
+                            org.slf4j;version=${import.org.slf4j};provider=paxlogging,
+                            org.osgi.service.component;version=${import.org.osgi.service.component},
+                            org.osgi.framework;version=${import.org.osgi.framework},
+                            org.osgi.service.cm;version=${import.org.osgi.service.cm},
+                            javax.websocket,
+                            javax.websocket.server,
+                            
+                            com.ge.lighting.hydra.m2m.common,
+                            com.ge.lighting.hydra.m2m.json,
+                            com.ge.lighting.hydra.datacollection,
+                            
+                            com.ge.lighting.hydra,               
+                            com.ge.lighting.hydra.dataingestion.mq
+                        </Import-Package>
+                        <Export-Package>
+                        </Export-Package>
+                        <Service-Component>*</Service-Component>
+                    </instructions>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
