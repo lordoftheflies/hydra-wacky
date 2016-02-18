@@ -1,2 +1,12 @@
 /**/target/
 /**/.mvn/
+/**/.classpath
+/**/.project
+/**/.settings/
+/**/nb-configuration.xml
+/**/.springBeans
+/**/.checkstyle
+/**/nbactions.xml
+/**/pom.xml.releaseBackup
+/hydra-bundles/**/.gitignore
+/hydra-microservices/**/.gitignore
