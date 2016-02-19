@@ -1,1 +1,6 @@
 language: java
+addons:
+  postgresql: "9.3"
+
+services:
+  - postgresql
