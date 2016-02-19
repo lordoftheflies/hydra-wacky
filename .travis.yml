@@ -5,4 +5,7 @@ addons:
   postgresql: "9.3"
 services:
   - postgresql
+before_script:
+  - psql -c 'CREATE ROLE hydra_admin SUPERUSER LOGIN CREATEDB WITH PASSWORD "ombre2383";'
+  - psql -c 'CREATE DATABASE hydra_development;' -U hydra_admin
 
