@@ -17,6 +17,8 @@
         <module>hydra-dataingestion</module>
         <module>hydra-datasource</module>
         <module>hydra-server-boot</module>
+        <module>hydra-visualization-datasource</module>
+        <module>hydra-infrastucture-datasource</module>
     </modules>
     
 </project>
