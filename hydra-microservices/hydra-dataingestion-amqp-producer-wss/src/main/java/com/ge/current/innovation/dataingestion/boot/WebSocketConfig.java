@@ -7,6 +7,9 @@ package com.ge.current.innovation.dataingestion.boot;
 
 import com.ge.current.innovation.dataingestion.handlers.AlertMessageHandler;
 import com.ge.current.innovation.dataingestion.handlers.DataIngestionMessageHandler;
+import com.ge.current.innovation.dataingestion.service.RabbitMqProducerService;
+import org.springframework.beans.factory.annotation.Autowire;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
@@ -51,6 +54,7 @@ public class WebSocketConfig extends WebMvcConfigurerAdapter implements WebSocke
 //
 //        registry.addHandler(snakeWebSocketHandler(), "/sockjs/snake").withSockJS();
     }
+            
 
     @Bean
     public WebSocketHandler alertWebSocketHandler() {
