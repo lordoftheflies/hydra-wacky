@@ -3,21 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.ge.current.innovation.hydra.dataingestion;
+package com.ge.current.innovation.dataingestion.boot;
 
 import com.ge.current.innovation.DataPoint;
-import com.ge.current.innovation.hydra.storage.entities.AssetMeterEntity;
-import com.ge.current.innovation.hydra.storage.entities.DataPointEntity;
-import com.ge.current.innovation.hydra.storage.message.dal.AssetMeterRepository;
-import com.ge.current.innovation.hydra.storage.message.dal.DataPointRepository;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import org.springframework.amqp.core.Message;
-import org.springframework.amqp.core.MessageListener;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 /**
  *
@@ -29,37 +21,38 @@ public class DataIngestionListener {
 
     private SimpleDateFormat sdf = new SimpleDateFormat();
 
-    private DataPointRepository dataPointRepository;
+//    private DataPointRepository dataPointRepository;
+//
+//    private AssetMeterRepository assetMeterRepository;
 
-    private AssetMeterRepository assetMeterRepository;
+//    public DataIngestionListener(DataPointRepository dataPointRepository, AssetMeterRepository assetMeterRepository) {
+//        this.dataPointRepository = dataPointRepository;
+//        this.assetMeterRepository = assetMeterRepository;
+//    }
 
-    public DataIngestionListener(DataPointRepository dataPointRepository, AssetMeterRepository assetMeterRepository) {
-        this.dataPointRepository = dataPointRepository;
-        this.assetMeterRepository = assetMeterRepository;
-    }
-
-    private AssetMeterEntity getAssetMeter(String assetMeterId) {
-        if (assetMeterRepository.uriExists(assetMeterId)) {
-            return assetMeterRepository.findByUri(assetMeterId);
-        } else {
-            LOG.log(Level.INFO, "Asset meter not exist, creating new one for {0}", assetMeterId);
-            AssetMeterEntity entity = new AssetMeterEntity();
-            entity.setUri(assetMeterId);
-            return assetMeterRepository.save(entity);
-        }
-    }
-
-    private DataPointEntity toEntity(DataPoint dto) throws ParseException {
-        DataPointEntity entity = new DataPointEntity();
-        entity.setTimeStamp(sdf.parse(dto.getTs()));
-        entity.setAssetMeter(getAssetMeter(dto.getCode()));
-        entity.setVal(dto.getValue());
-        return entity;
-    }
+//    private AssetMeterEntity getAssetMeter(String assetMeterId) {
+//        if (assetMeterRepository.uriExists(assetMeterId)) {
+//            return assetMeterRepository.findByUri(assetMeterId);
+//        } else {
+//            LOG.log(Level.INFO, "Asset meter not exist, creating new one for {0}", assetMeterId);
+//            AssetMeterEntity entity = new AssetMeterEntity();
+//            entity.setUri(assetMeterId);
+//            return assetMeterRepository.save(entity);
+//        }
+//    }
+//
+//    private DataPointEntity toEntity(DataPoint dto) throws ParseException {
+//        DataPointEntity entity = new DataPointEntity();
+//        entity.setTimeStamp(sdf.parse(dto.getTs()));
+//        entity.setAssetMeter(getAssetMeter(dto.getCode()));
+//        entity.setVal(dto.getValue());
+//        return entity;
+//    }
 
     public void onMessage(DataPoint msg) throws ParseException {
-        LOG.info("Ingest data-point: " + msg.toString());
-        dataPointRepository.save(toEntity(msg));
+//    public void onMessage(String msg) throws ParseException {
+        LOG.log(Level.INFO, "Ingest data-point: {0}", msg.toString());
+//        dataPointRepository.save(toEntity(msg));
     }
 
 }
