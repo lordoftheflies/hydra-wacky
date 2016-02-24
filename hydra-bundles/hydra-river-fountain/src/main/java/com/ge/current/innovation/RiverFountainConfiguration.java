@@ -17,8 +17,8 @@ import org.springframework.context.annotation.Configuration;
  *
  * @author lordoftheflies
  */
-@Configuration
-@EnableRabbit
+//@Configuration
+//@EnableRabbit
 public class RiverFountainConfiguration  {
 
     @Value("${rabbitmq.queue.data}")
@@ -26,6 +26,8 @@ public class RiverFountainConfiguration  {
 
     @Value("${rabbitmq.host}")
     private String host;
+    @Value("${rabbitmq.virtualHost}")
+    private String virtualHost;
 
     @Value("${rabbitmq.port}")
     private String port;
@@ -44,6 +46,7 @@ public class RiverFountainConfiguration  {
         CachingConnectionFactory connectionFactory = new CachingConnectionFactory(host);
         connectionFactory.setUsername(login);
         connectionFactory.setPassword(password);
+        connectionFactory.setVirtualHost(virtualHost);
         return connectionFactory;
     }
 
