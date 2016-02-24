@@ -29,16 +29,16 @@ import org.eclipse.jetty.websocket.client.ClientUpgradeRequest;
  * Basic Echo Client Socket
  */
 @WebSocket
-public class SimpleAlertSocket {
+public class AlertConsumerSocket {
 
-    private static final Logger LOG = Logger.getLogger(SimpleAlertSocket.class.getName());
+    private static final Logger LOG = Logger.getLogger(AlertConsumerSocket.class.getName());
 
     private final CountDownLatch closeLatch;
 
     @SuppressWarnings("unused")
     private Session session;
 
-    public SimpleAlertSocket() {
+    public AlertConsumerSocket() {
         this.closeLatch = new CountDownLatch(1);
     }
 

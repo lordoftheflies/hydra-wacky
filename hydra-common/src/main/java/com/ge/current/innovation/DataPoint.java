@@ -13,6 +13,15 @@ import java.io.Serializable;
  */
 public class DataPoint implements Serializable {
 
+    public DataPoint() {
+    }
+
+    public DataPoint(String ts, String code, Double value) {
+        this.ts = ts;
+        this.code = code;
+        this.value = value;
+    }
+
     private String ts;
 
     public String getTs() {
