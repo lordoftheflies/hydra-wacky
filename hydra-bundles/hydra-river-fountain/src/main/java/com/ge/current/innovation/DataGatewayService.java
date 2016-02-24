@@ -10,6 +10,7 @@ import java.io.Serializable;
 import java.net.URI;
 import java.text.SimpleDateFormat;
 import java.util.concurrent.Future;
+import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.eclipse.jetty.websocket.api.Session;
@@ -46,9 +47,11 @@ public class DataGatewayService {
         try (Session session = dataIngestionWebsocketClient.connect(dataIngestionConsumerSocket, dataIngestionUri, new ClientUpgradeRequest()).get()) {
             LOG.log(Level.INFO, "\tConnecting to data-ingestion websocket-server[{0}] ...", dataIngestionUrl);
             for (DataPoint msg : messages) {
+                msg.setValue((double)i);
                 session.getRemote().sendString(msg.toString());
                 LOG.log(Level.INFO, "\t\tSend {0} message: {1}", new Object[]{i++, msg});
             }
+            dataIngestionConsumerSocket.awaitClose(10, TimeUnit.SECONDS);
             LOG.log(Level.INFO, "\tClose session.");
         } finally {
             try {

@@ -42,8 +42,7 @@ public class RabbitMqProducerService {
 
     public void send(DataPoint... points) {
         LOG.log(Level.INFO, "Produce data-points ({0}) to aggregation-tier ...", points.length);
-        for (int i = 0; i < points.length; i++) {
-            DataPoint point = points[i];
+        for (DataPoint point : points) {
             rabbitTemplate.convertAndSend(dataQuew, point);
         }
         LOG.info("Producer sent the data-points.");
