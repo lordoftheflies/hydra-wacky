@@ -1,4 +1,4 @@
-package com.ge.predix.solsvc.boot;
+package com.ge.current.innovation.dataingestion.boot;
 
 import static org.hamcrest.Matchers.startsWith;
 import static org.junit.Assert.assertThat;
@@ -17,7 +17,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.web.client.RestTemplate;
 
-import com.ge.current.innovation.boot.Application;
+import com.ge.current.innovation.dataingestion.boot.Application;
 
 /**
  * Spins up Spring Boot and accesses the URLs of the Rest apis

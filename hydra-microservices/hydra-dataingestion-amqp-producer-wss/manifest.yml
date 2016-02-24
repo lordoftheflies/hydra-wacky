@@ -1,0 +1,5 @@
+---
+applications:
+  - name: hydra_dataingestion_amqp_producer_wss
+    buildpack: java_buildpack
+    path: target/hydra-dataingestion-amqp-producer-wss-1.0.0.jar

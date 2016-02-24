@@ -1,4 +1,4 @@
-package com.ge.predix.solsvc.boot;
+package com.ge.current.innovation.dataingestion.boot;
 
 import static org.hamcrest.Matchers.startsWith;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -16,7 +16,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import com.ge.current.innovation.service.HelloController;
+import com.ge.current.innovation.dataingestion.service.HelloController;
 
 /**
  * 
