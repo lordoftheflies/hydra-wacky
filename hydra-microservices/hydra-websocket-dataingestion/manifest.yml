@@ -1,0 +1,5 @@
+---
+applications:
+  - name: hydra_websocket_dataingestion
+    buildpack: java_buildpack
+    path: target/hydra-websocket-dataingestion-1.0.0.jar
