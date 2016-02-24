@@ -15,10 +15,11 @@
     <modules>
         <module>hydra-storage</module>
         <module>hydra-dataingestion</module>
-        <module>hydra-datasource</module>
         <module>hydra-server-boot</module>
         <module>hydra-visualization-datasource</module>
         <module>hydra-infrastucture-datasource</module>
+        <module>hydra-amqp-dataingestion</module>
+        <module>hydra-websocket-dataingestion</module>
     </modules>
     
 </project>

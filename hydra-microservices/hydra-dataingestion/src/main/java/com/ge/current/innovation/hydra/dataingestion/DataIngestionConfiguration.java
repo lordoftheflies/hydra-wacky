@@ -49,12 +49,17 @@ public class DataIngestionConfiguration implements RabbitListenerConfigurer {
     
     @Value("${river.dateFormat}")
     private String dateFormat;
+    
+    @Value("${rabbitmq.virtualHost}")
+    private String vhost;
 
     @Bean
     public ConnectionFactory connectionFactory() {
         CachingConnectionFactory connectionFactory = new CachingConnectionFactory(host);
-        connectionFactory.setUsername(login);
-        connectionFactory.setPassword(password);
+//        connectionFactory.setUsername(login);
+//        connectionFactory.setPassword(password);
+//        connectionFactory.setVirtualHost(vhost);
+        connectionFactory.setUri("amqp://a01ceff9-3b41-474d-8a6e-37194d7e406b:17vgaf0q7oag78ed6bstl9p3eu@10.72.6.45:5672/f7793d88-3051-4f31-b382-f427bcb10a4c");
         return connectionFactory;
     }
 
