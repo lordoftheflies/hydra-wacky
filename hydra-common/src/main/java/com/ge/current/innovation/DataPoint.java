@@ -6,12 +6,24 @@
 package com.ge.current.innovation;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Random;
 
 /**
  *
  * @author lordoftheflies
  */
 public class DataPoint implements Serializable {
+
+    public DataPoint() {
+    }
+
+    public DataPoint(String ts, String code, Double value) {
+        this.ts = ts;
+        this.code = code;
+        this.value = value;
+    }
 
     private String ts;
 
@@ -46,5 +58,13 @@ public class DataPoint implements Serializable {
     @Override
     public String toString() {
         return "DataPoint{" + "ts=" + ts + ", code=" + code + ", value=" + value + '}';
+    }
+
+    public DataPoint parse(String payload) {
+        this.code="test-rabbit-producer";
+        this.ts = new SimpleDateFormat().format(new Date());
+        this.value = new Random().nextDouble();
+        
+        return this;
     }
 }

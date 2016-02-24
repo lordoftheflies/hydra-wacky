@@ -5,17 +5,19 @@
  */
 package com.ge.current.innovation;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.socket.client.WebSocketConnectionManager;
 import org.springframework.web.socket.client.jetty.JettyWebSocketClient;
 
 @Configuration
-public class WebsocketClientConfig {
-
+public class DataIngestionWebsocketClientConfig {
+@Value("${dataingestion.protocol}://${dataingestion.uri}")
+    private String dataIngestionUrl;
     @Bean
     public WebSocketConnectionManager connectionManager() {
-        WebSocketConnectionManager manager = new WebSocketConnectionManager(client(), handler(), RiverFountainApplication.ALERT_WS_URI);
+        WebSocketConnectionManager manager = new WebSocketConnectionManager(client(), handler(), dataIngestionUrl);
         manager.setAutoStartup(true);
         return manager;
     }

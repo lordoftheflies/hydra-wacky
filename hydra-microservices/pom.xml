@@ -13,13 +13,12 @@
     </parent>
     
     <modules>
-        <module>hydra-storage</module>
         <module>hydra-server-boot</module>
         <module>hydra-visualization-datasource</module>
         <module>hydra-infrastucture-datasource</module>
-        <module>hydra-amqp-dataingestion</module>
-        <module>hydra-dataingestion-amqp-consumer</module>
         <module>hydra-dataingestion-amqp-producer-wss</module>
+        <module>hydra-dataingestion-amqp-consumer</module>
+        <module>hydra-storage-tier-jpa</module>
     </modules>
     
 </project>

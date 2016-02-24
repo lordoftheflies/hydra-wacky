@@ -1,7 +1,0 @@
----
-applications:
-  - name: hydra_amqp_dataingestion
-    buildpack: java_buildpack
-    path: target/hydra-amqp-dataingestion-1.0.0.jar
-services:
-      - hydra_rabbitmq
