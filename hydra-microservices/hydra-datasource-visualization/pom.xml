@@ -4,10 +4,10 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.ge.current.innovation</groupId>
-	<artifactId>hydra-infrastructure-datasource</artifactId>
+	<artifactId>hydra-datasource-visualization</artifactId>
 	<version>1.0.0</version>
 
-	<parent>
+    <parent>
         <groupId>com.ge.current.innovation</groupId>
         <artifactId>hydra-microservices</artifactId>
         <version>1.0-SNAPSHOT</version>
@@ -40,9 +40,8 @@
                     <groupId>io.springfox</groupId>
                     <artifactId>springfox-swagger-ui</artifactId>
                 </dependency>
-            </dependencies>
+	</dependencies>
 
-	
 	<build>
 		<plugins>
 			<plugin>
@@ -199,5 +198,5 @@
             </plugins>
         </pluginManagement>
     </build>
-
+    <name>hydra-datasource-visualization</name>
 </project>
