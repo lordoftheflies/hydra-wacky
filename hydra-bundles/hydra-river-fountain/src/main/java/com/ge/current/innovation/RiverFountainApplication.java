@@ -112,61 +112,6 @@ public class RiverFountainApplication implements CommandLineRunner {
 
     @Override
     public void run(String... strings) throws Exception {
-
-//        WebSocketClient alertWebsocketClient = new WebSocketClient();
-//        AlertConsumerSocket alertConsumerSocket = new AlertConsumerSocket();
-//
-//        try {
-//            alertWebsocketClient.start();
-//            URI echoUri = new URI(ALERT_WS_URI);
-//
-//            Future<Session> fut = alertWebsocketClient.connect(alertConsumerSocket, echoUri, new ClientUpgradeRequest());
-//            try (Session session = fut.get()) {
-//                for (int i = 0; i < 1000; i++) {
-//                    session.getRemote().sendString("Alert-" + i);
-//                    LOG.log(Level.INFO, "Alert-{0}", i);
-//                }
-//            }
-//
-////            ClientUpgradeRequest request = new ClientUpgradeRequest();
-////            client2.connect(dataSocket, new URI(DATA_WS_URI), request);
-////            System.out.printf("Connecting to : %s%n", echoUri);
-////
-////            dataSocket.awaitClose(5, TimeUnit.SECONDS);
-//        } catch (Throwable t) {
-//            t.printStackTrace();
-//        } finally {
-//            try {
-//                alertWebsocketClient.stop();
-//            } catch (Exception e) {
-//                e.printStackTrace();
-//            }
-//        }
-//        
-//        
-//         WebSocketClient dataWebsocketClient = new WebSocketClient();
-//        DataIngestionConsumerSocket dataConsumerSocket = new DataIngestionConsumerSocket();
-//
-//        try {
-//            dataWebsocketClient.start();
-//            URI echoUri = new URI(DATA_WS_URI);
-//
-//            Future<Session> fut = dataWebsocketClient.connect(dataConsumerSocket, echoUri, new ClientUpgradeRequest());
-//            try (Session session = fut.get()) {
-//                for (int i = 0; i < 1000; i++) {
-//                    session.getRemote().sendString("Data-" + i);
-//                    LOG.log(Level.INFO, "Data-{0}", i);
-//                }
-//            }
-//        } catch (Throwable t) {
-//            t.printStackTrace();
-//        } finally {
-//            try {
-//                dataWebsocketClient.stop();
-//            } catch (Exception e) {
-//                e.printStackTrace();
-//            }
-//        }
         strings = new String[]{"test.csv"};
 
         this.generateData(5, strings[0]);
@@ -177,14 +122,6 @@ public class RiverFountainApplication implements CommandLineRunner {
                     .collect(Collectors.toList());
             DataPoint[] pst = new DataPoint[messages.size()];
             dataIngestionGatewayService.send(messages.toArray(pst));
-//        Random random = new Random();
-//        for (int i = 0; i < 100; i++) {
-//            DataPoint dp = new DataPoint();
-//            dp.setTs(sdf.format(new Date()));
-//            dp.setCode("100");
-//            dp.setValue(random.nextDouble());
-//            rabbitTemplate.convertAndSend("data", dp);
-//        }
         }
     }
 }
