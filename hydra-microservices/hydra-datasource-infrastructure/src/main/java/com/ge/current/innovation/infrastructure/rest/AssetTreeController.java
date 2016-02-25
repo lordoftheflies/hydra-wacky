@@ -5,7 +5,7 @@
  */
 package com.ge.current.innovation.infrastructure.rest;
 
-import com.ge.current.innovation.hydra.storage.dal.AssetRepository;
+import com.ge.current.innovation.storage.jpa.dal.AssetRepository;
 import com.ge.current.innovation.infrastructure.dto.AssetNodeDto;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

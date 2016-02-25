@@ -35,8 +35,23 @@
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>hydra-datasource</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <artifactId>hydra-datasource-infrastructure</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>hydra-datasource-visualization</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.ge.predix.labs</groupId>
+            <artifactId>hydra-dataingestion-amqp-consumer</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.ge.predix.solsvc</groupId>
+            <artifactId>hydra-dataingestion-amqp-producer-wss</artifactId>
+            <version>1.0.0</version>
         </dependency>
     </dependencies>
 	

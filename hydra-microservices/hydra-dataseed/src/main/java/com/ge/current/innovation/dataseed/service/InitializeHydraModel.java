@@ -5,16 +5,16 @@
  */
 package com.ge.current.innovation.dataseed.service;
 
-import com.ge.current.innovation.hydra.storage.dal.AssetMeterRepository;
-import com.ge.current.innovation.hydra.storage.dal.AssetRepository;
-import com.ge.current.innovation.hydra.storage.dal.AttributeRepository;
-import com.ge.current.innovation.hydra.storage.dal.ClassificationRepository;
-import com.ge.current.innovation.hydra.storage.dal.MeterRepository;
-import com.ge.current.innovation.hydra.storage.entities.AssetEntity;
-import com.ge.current.innovation.hydra.storage.entities.AssetMeterEntity;
-import com.ge.current.innovation.hydra.storage.entities.AttributeEntity;
-import com.ge.current.innovation.hydra.storage.entities.ClassificationEntity;
-import com.ge.current.innovation.hydra.storage.entities.MeterEntity;
+import com.ge.current.innovation.storage.jpa.dal.AssetMeterRepository;
+import com.ge.current.innovation.storage.jpa.dal.AssetRepository;
+import com.ge.current.innovation.storage.jpa.dal.AttributeRepository;
+import com.ge.current.innovation.storage.jpa.dal.ClassificationRepository;
+import com.ge.current.innovation.storage.jpa.dal.MeterRepository;
+import com.ge.current.innovation.storage.jpa.entities.AssetEntity;
+import com.ge.current.innovation.storage.jpa.entities.AssetMeterEntity;
+import com.ge.current.innovation.storage.jpa.entities.AttributeEntity;
+import com.ge.current.innovation.storage.jpa.entities.ClassificationEntity;
+import com.ge.current.innovation.storage.jpa.entities.MeterEntity;
 import java.util.List;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;

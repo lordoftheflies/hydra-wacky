@@ -5,10 +5,10 @@
  */
 package com.ge.current.innovation.infrastructure.rest;
 
-import com.ge.current.innovation.hydra.storage.dal.AttributeRepository;
-import com.ge.current.innovation.hydra.storage.dal.ClassificationRepository;
-import com.ge.current.innovation.hydra.storage.entities.AttributeEntity;
-import com.ge.current.innovation.hydra.storage.entities.ClassificationEntity;
+import com.ge.current.innovation.storage.jpa.dal.AttributeRepository;
+import com.ge.current.innovation.storage.jpa.dal.ClassificationRepository;
+import com.ge.current.innovation.storage.jpa.entities.AttributeEntity;
+import com.ge.current.innovation.storage.jpa.entities.ClassificationEntity;
 import com.ge.current.innovation.infrastructure.dto.AttributeDto;
 import com.ge.current.innovation.infrastructure.dto.ClassificationDto;
 import io.swagger.annotations.Api;
