@@ -7,5 +7,5 @@ services:
   - postgresql
   - rabbitmq
 before_script:
-  - psql -c 'CREATE DATABASE hydra_dev;' -U postgres
+  - psql -c 'CREATE DATABASE hydra_prod;' -U postgres
 
