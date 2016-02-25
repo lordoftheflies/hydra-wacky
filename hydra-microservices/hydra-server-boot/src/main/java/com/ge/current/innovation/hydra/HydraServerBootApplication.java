@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-//@ComponentScan(basePackages = "com.ge.current.innovation")
+@ComponentScan(basePackages = "com.ge.current.innovation.storage.jpa")
 public class HydraServerBootApplication {
 
     
