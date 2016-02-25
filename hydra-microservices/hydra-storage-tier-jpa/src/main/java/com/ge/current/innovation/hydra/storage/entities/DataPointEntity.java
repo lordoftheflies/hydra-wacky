@@ -31,6 +31,16 @@ import javax.persistence.TemporalType;
 })
 public class DataPointEntity implements Serializable {
 
+    public DataPointEntity() {
+    }
+
+    public DataPointEntity(Long id, Double val, AssetMeterEntity assetMeter, Date timeStamp) {
+        this.id = id;
+        this.val = val;
+        this.assetMeter = assetMeter;
+        this.timeStamp = timeStamp;
+    }
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

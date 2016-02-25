@@ -6,12 +6,19 @@
 package com.ge.current.innovation.hydra.storage.dal;
 
 import com.ge.current.innovation.hydra.storage.entities.AssetEntity;
+import java.util.List;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
 
 /**
  *
  * @author lordoftheflies
  */
+@Repository
 public interface AssetRepository extends CrudRepository<AssetEntity, Long> {
-
+    
+    List<AssetEntity> findRoots();
+    
+    List<AssetEntity> findChildren(@Param("parentId") Long parentId);
 }

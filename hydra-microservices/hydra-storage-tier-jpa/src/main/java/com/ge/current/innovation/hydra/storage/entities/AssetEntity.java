@@ -8,10 +8,13 @@ package com.ge.current.innovation.hydra.storage.entities;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
 /**
@@ -19,11 +22,23 @@ import javax.persistence.OneToMany;
  * @author lordoftheflies
  */
 @Entity
+@NamedQueries({
+    @NamedQuery(name = "AssetEntity.findRoots", query = "SELECT a FROM AssetEntity a WHERE a.parent IS NULL"),
+    @NamedQuery(name = "AssetEntity.findChildren", query = "SELECT a FROM AssetEntity a WHERE a.parent.id = :parentId")
+})
 public class AssetEntity extends DomainEntity {
 
     @OneToMany(mappedBy = "parent")
     private List<AssetEntity> children;
 
+    public List<AssetEntity> getChildren() {
+        return children;
+    }
+
+    public void setChildren(List<AssetEntity> children) {
+        this.children = children;
+    }
+    
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -37,7 +52,7 @@ public class AssetEntity extends DomainEntity {
         this.id = id;
     }
 
-    @ManyToOne
+    @ManyToOne(optional = true, fetch = FetchType.EAGER)
     private ClassificationEntity classification;
 
     public ClassificationEntity getClassification() {

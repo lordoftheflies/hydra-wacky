@@ -1,5 +1,0 @@
----
-applications:
-  - name: hydra_visualization_datasource
-    buildpack: java_buildpack
-    path: target/hydra-visualization-datasource-1.0.0.jar

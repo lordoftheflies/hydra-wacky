@@ -1,0 +1,5 @@
+---
+applications:
+  - name: hydra_datasource_infrastructure
+    buildpack: java_buildpack
+    path: target/hydra-datasource-infrastructure-1.0.0.jar

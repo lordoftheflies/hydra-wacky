@@ -6,10 +6,12 @@
 package com.ge.current.innovation.hydra.storage.entities;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -30,7 +32,7 @@ public class MeterEntity implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
-    
+
     private String name;
 
     public String getName() {
@@ -40,7 +42,7 @@ public class MeterEntity implements Serializable {
     public void setName(String name) {
         this.name = name;
     }
-    
+
     private String uom;
 
     public String getUom() {
@@ -50,7 +52,18 @@ public class MeterEntity implements Serializable {
     public void setUom(String uom) {
         this.uom = uom;
     }
-    
+
+    @OneToMany(mappedBy = "meter")
+    private List<AttributeEntity> attributes;
+
+    public List<AttributeEntity> getAttributes() {
+        return attributes;
+    }
+
+    public void setAttributes(List<AttributeEntity> attributes) {
+        this.attributes = attributes;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -75,5 +88,5 @@ public class MeterEntity implements Serializable {
     public String toString() {
         return "com.ge.current.innovation.hydra.storage.entities.MeterEntity[ id=" + id + " ]";
     }
-    
+
 }

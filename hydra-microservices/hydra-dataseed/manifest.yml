@@ -1,0 +1,5 @@
+---
+applications:
+  - name: predix-microservice-cf-spring2
+    buildpack: java_buildpack
+    path: target/predix-microservice-cf-spring-1.1.6.jar
