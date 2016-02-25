@@ -61,7 +61,6 @@ import org.springframework.web.context.support.StandardServletEnvironment;
 })
 @PropertySource("classpath:application-default.properties")
 @ComponentScan(basePackages="com.ge.current.innovation")
-
 public class Application
 {
     private static final Logger log = LoggerFactory.getLogger(Application.class);
