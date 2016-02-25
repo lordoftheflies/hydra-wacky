@@ -5,7 +5,6 @@
  */
 package com.ge.current.innovation.hydra.storage.entities;
 
-import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;

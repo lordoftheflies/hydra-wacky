@@ -24,6 +24,13 @@ import javax.persistence.NamedQuery;
 })
 public class AssetMeterEntity extends DomainEntity {
 
+    public AssetMeterEntity() {
+    }
+
+    public AssetMeterEntity(String uri, String friendlyName, String description) {
+        super(uri, friendlyName, description);
+    }
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

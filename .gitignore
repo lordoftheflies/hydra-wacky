@@ -10,3 +10,4 @@
 /**/pom.xml.releaseBackup
 /hydra-bundles/**/.gitignore
 /hydra-microservices/**/.gitignore
+/**/.idea/
