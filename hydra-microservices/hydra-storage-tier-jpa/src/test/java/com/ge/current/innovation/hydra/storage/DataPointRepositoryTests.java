@@ -9,7 +9,6 @@ import com.ge.current.innovation.hydra.storage.dal.AssetMeterRepository;
 import com.ge.current.innovation.hydra.storage.dal.AssetRepository;
 import com.ge.current.innovation.hydra.storage.dal.DataPointRepository;
 import com.ge.current.innovation.hydra.storage.dal.MeterRepository;
-import com.ge.current.innovation.hydra.storage.entities.AttributeEntity;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -73,7 +72,7 @@ public class DataPointRepositoryTests {
         assetRepo.save(assetEntity);
 
         AssetMeterEntity assetMeterEntity = new AssetMeterEntity();
-        assetMeterEntity.setAttribute(new AttributeEntity());
+        assetMeterEntity.setAttribute(null);
         assetMeterEntity.setAsset(assetEntity);
         assetMeterRepo.save(assetMeterEntity);
 
@@ -102,7 +101,7 @@ public class DataPointRepositoryTests {
         assetRepo.save(assetEntity);
 
         AssetMeterEntity assetMeterEntity = new AssetMeterEntity();
-        assetMeterEntity.setAttribute(new AttributeEntity());
+        assetMeterEntity.setAttribute(null);
         assetMeterEntity.setAsset(assetEntity);
         assetMeterRepo.save(assetMeterEntity);
 

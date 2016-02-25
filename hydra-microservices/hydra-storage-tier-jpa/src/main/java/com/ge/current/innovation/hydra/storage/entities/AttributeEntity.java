@@ -28,6 +28,16 @@ import javax.persistence.OneToMany;
 public class AttributeEntity extends DomainEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
+
+    public AttributeEntity() {
+    }
+
+    public AttributeEntity(String uri, String friendlyName, String description) {
+        super(uri, friendlyName, description);
+    }
+    
+    
+    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;

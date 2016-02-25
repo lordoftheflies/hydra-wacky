@@ -21,6 +21,17 @@ import javax.persistence.OneToMany;
 public class MeterEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
+
+    public MeterEntity() {
+    }
+
+    public MeterEntity(Long id, String name, String uom, List<AttributeEntity> attributes) {
+        this.id = id;
+        this.name = name;
+        this.uom = uom;
+        this.attributes = attributes;
+    }
+    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;

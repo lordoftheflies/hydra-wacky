@@ -28,6 +28,13 @@ import javax.persistence.OneToMany;
 })
 public class AssetEntity extends DomainEntity {
 
+    public AssetEntity() {
+    }
+
+    public AssetEntity(String uri, String friendlyName, String description) {
+        super(uri, friendlyName, description);
+    }
+
     @OneToMany(mappedBy = "parent")
     private List<AssetEntity> children;
 
@@ -38,7 +45,7 @@ public class AssetEntity extends DomainEntity {
     public void setChildren(List<AssetEntity> children) {
         this.children = children;
     }
-    
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -62,7 +69,7 @@ public class AssetEntity extends DomainEntity {
     public void setClassification(ClassificationEntity classification) {
         this.classification = classification;
     }
-    
+
     @ManyToOne
     private AssetEntity parent;
 
@@ -73,7 +80,7 @@ public class AssetEntity extends DomainEntity {
     public void setParent(AssetEntity parent) {
         this.parent = parent;
     }
-    
+
     @OneToMany(mappedBy = "asset")
     private List<AssetMeterEntity> assetMeters;
 
@@ -109,5 +116,5 @@ public class AssetEntity extends DomainEntity {
     public String toString() {
         return "com.ge.current.innovation.hydra.storage.entities.AssetEntity[ id=" + id + " ]";
     }
-    
+
 }

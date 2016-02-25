@@ -15,6 +15,17 @@ import javax.persistence.MappedSuperclass;
 @MappedSuperclass
 public class DomainEntity implements Serializable {
 
+    public DomainEntity(String uri, String friendlyName, String description) {
+        this.uri = uri;
+        this.friendlyName = friendlyName;
+        this.description = description;
+    }
+
+    public DomainEntity() {
+    }
+
+    
+    
     private String uri;
 
     public String getUri() {

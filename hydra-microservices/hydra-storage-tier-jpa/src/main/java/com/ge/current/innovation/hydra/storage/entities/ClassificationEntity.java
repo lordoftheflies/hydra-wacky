@@ -21,6 +21,14 @@ import javax.persistence.OneToMany;
 public class ClassificationEntity extends DomainEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
+
+    public ClassificationEntity() {
+    }
+
+    public ClassificationEntity(String uri, String friendlyName, String description) {
+        super(uri, friendlyName, description);
+    }
+    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
