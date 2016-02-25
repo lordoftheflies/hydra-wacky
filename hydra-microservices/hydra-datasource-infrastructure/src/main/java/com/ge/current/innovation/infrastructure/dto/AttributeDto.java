@@ -21,7 +21,7 @@ public class AttributeDto extends ContentLikeDto {
     public AttributeDto() {
     }
 
-    public AttributeDto(UUID id, String key, String name, String description, String unit) {
+    public AttributeDto(Long id, String key, String name, String description, String unit) {
         super(id, name, description);
         this.unit = unit;
         this.key = key;

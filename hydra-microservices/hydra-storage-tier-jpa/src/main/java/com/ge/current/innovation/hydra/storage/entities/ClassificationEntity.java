@@ -18,7 +18,7 @@ import javax.persistence.OneToMany;
  * @author lordoftheflies
  */
 @Entity
-public class ClassificationEntity implements Serializable {
+public class ClassificationEntity extends DomainEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -32,6 +32,7 @@ public class ClassificationEntity implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
+
     @OneToMany(mappedBy = "classification")
     private List<AssetEntity> elements;
 
@@ -41,6 +42,17 @@ public class ClassificationEntity implements Serializable {
 
     public void setElements(List<AssetEntity> elements) {
         this.elements = elements;
+    }
+
+    @OneToMany(mappedBy = "classification")
+    private List<AttributeEntity> attributes;
+
+    public List<AttributeEntity> getAttributes() {
+        return attributes;
+    }
+
+    public void setAttributes(List<AttributeEntity> attributes) {
+        this.attributes = attributes;
     }
 
     @Override

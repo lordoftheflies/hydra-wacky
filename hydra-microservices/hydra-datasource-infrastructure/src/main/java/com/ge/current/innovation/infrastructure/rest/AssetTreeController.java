@@ -5,12 +5,13 @@
  */
 package com.ge.current.innovation.infrastructure.rest;
 
-
+import com.ge.current.innovation.hydra.storage.dal.AssetRepository;
 import com.ge.current.innovation.infrastructure.dto.AssetNodeDto;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import java.util.ArrayList;
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,10 +28,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/assettree")
 public class AssetTreeController {
 
-//    @Autowired
-//    private AssetStore assetDao;
-//    @Autowired
-//    private ModelStore modelStore;
+    @Autowired
+    private AssetRepository assetRepo;
 
     @CrossOrigin
     @RequestMapping(
@@ -40,14 +39,14 @@ public class AssetTreeController {
     @ApiOperation(value = "/roots", nickname = "Root assets.", notes = "Root assets.")
     public List<AssetNodeDto> roots() {
         List<AssetNodeDto> dto = new ArrayList<>();
-//        assetDao.getAssetTreeDao().findRoots().forEach(a
-//                -> dto.add(new AssetNodeDto(a.getId(),
-//                        null,
-//                        a.getMetaEntity().getMd().getState(),
-//                        a.getMetaEntity().getId().toString(),
-//                        a.getFriendlyName(),
-//                        a.getDescription()
-//                )));
+        assetRepo.findRoots().forEach(a
+                -> dto.add(new AssetNodeDto(
+                        a.getId(),
+                        null,
+                        a.getClassification().getId(),
+                        a.getFriendlyName(),
+                        a.getDescription()
+                )));
         return dto;
     }
 
@@ -58,20 +57,17 @@ public class AssetTreeController {
             produces = {MediaType.APPLICATION_JSON_VALUE})
     @ApiOperation(value = "/children/{id}", nickname = "Children assets.", notes = "Children assets of the parent..")
     public List<AssetNodeDto> children(
-            @PathVariable("id") String id
+            @PathVariable("id") Long id
     ) {
         List<AssetNodeDto> dto = new ArrayList<>();
-//        final UUID parentId = UUID.fromString(id);
-//        assetDao.getAssetTreeDao().findChildren(parentId).forEach(a
-//                -> dto.add(new AssetNodeDto(a.getId(),
-//                        parentId,
-//                        a.getMetaEntity().getMd().getState(),
-//                        a.getMetaEntity().getId().toString(),
-//                        a.getFriendlyName(),
-//                        a.getDescription()
-//                )));
+        assetRepo.findChildren(id).forEach(a
+                -> dto.add(new AssetNodeDto(a.getId(),
+                        id,
+                        a.getClassification().getId(),
+                        a.getFriendlyName(),
+                        a.getDescription()
+                )));
         return dto;
     }
 
-   
 }

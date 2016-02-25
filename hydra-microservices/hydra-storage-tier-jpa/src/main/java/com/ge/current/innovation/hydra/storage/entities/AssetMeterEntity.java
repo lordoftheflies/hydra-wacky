@@ -37,14 +37,15 @@ public class AssetMeterEntity extends DomainEntity {
         this.id = id;
     }
 
-    private MeterEntity meter;
+    @ManyToOne
+    private AttributeEntity attribute;
 
-    public MeterEntity getMeter() {
-        return meter;
+    public AttributeEntity getAttribute() {
+        return attribute;
     }
 
-    public void setMeter(MeterEntity meter) {
-        this.meter = meter;
+    public void setAttribute(AttributeEntity meter) {
+        this.attribute = meter;
     }
 
     @ManyToOne

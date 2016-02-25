@@ -8,6 +8,7 @@ package com.ge.current.innovation;
 import com.fasterxml.jackson.databind.MappingIterator;
 import com.fasterxml.jackson.dataformat.csv.CsvMapper;
 import com.fasterxml.jackson.dataformat.csv.CsvSchema;
+import com.ge.current.innovation.DataPoint;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;

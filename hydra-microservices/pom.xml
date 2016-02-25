@@ -19,6 +19,9 @@
         <module>hydra-dataingestion-amqp-producer-wss</module>
         <module>hydra-dataingestion-amqp-consumer</module>
         <module>hydra-storage-tier-jpa</module>
+        <module>hydra-datasource-visualization</module>
+        <module>hydra-datasource-infrastructure</module>
+        <module>hydra-dataseed</module>
     </modules>
     
 </project>

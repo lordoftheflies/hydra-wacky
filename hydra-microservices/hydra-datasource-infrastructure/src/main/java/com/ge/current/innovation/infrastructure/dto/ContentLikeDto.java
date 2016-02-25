@@ -7,7 +7,6 @@ package com.ge.current.innovation.infrastructure.dto;
 
 import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
-import java.util.UUID;
 
 /**
  *
@@ -18,20 +17,20 @@ public abstract class ContentLikeDto implements Serializable {
     public ContentLikeDto() {
     }
 
-    public ContentLikeDto(UUID id, String name, String description) {
+    public ContentLikeDto(Long id, String name, String description) {
         this.id = id;
         this.name = name;
         this.description = description;
     }
 
     @ApiModelProperty(value = "id", notes = "Id of the model.")
-    private UUID id;
+    private Long id;
 
-    public UUID getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

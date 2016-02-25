@@ -18,8 +18,8 @@ public class AssetDetailsDto extends AssetNodeDto {
     public AssetDetailsDto() {
     }
 
-    public AssetDetailsDto(UUID id, UUID parentId, String classification, String classificationId, String name, String description, Map<String, Object> properties) {
-        super(id, parentId, classification, classificationId, name, description);
+    public AssetDetailsDto(Long id, Long parentId, Long classification, String name, String description, Map<String, Object> properties) {
+        super(id, parentId, classification, name, description);
         this.properties = properties;
     }
     

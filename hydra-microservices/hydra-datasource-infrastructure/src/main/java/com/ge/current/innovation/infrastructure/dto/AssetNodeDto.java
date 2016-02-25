@@ -22,47 +22,35 @@ public class AssetNodeDto implements Serializable {
     public AssetNodeDto() {
     }
 
-    public AssetNodeDto(UUID id, UUID parentId, String classificationKey, String classificationId, String name, String description) {
+    public AssetNodeDto(Long id, Long parentId, Long classificationId, String name, String description) {
         this.id = id;
-        this.classification = classificationKey;
-        this.classificationId = classificationId;
+        this.classification = classificationId;
         this.name = name;
         this.description = description;
     }
 
     @ApiModelProperty(value = "id", notes = "Asset id.")
-    private UUID id;
+    private Long id;
 
-    public UUID getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    @ApiModelProperty(value = "classification", notes = "Classification key.")
-    private String classification;
+    @ApiModelProperty(value = "classification", notes = "Classification identifier.")
+    private Long classification;
 
-    public String getClassification() {
+    public Long getClassification() {
         return classification;
     }
 
-    public void setClassification(String classification) {
+    public void setClassification(Long classification) {
         this.classification = classification;
     }
 
-    @ApiModelProperty(value = "classificationId", notes = "Classification identifier.")
-    private String classificationId;
-
-    public String getClassificationId() {
-        return classificationId;
-    }
-
-    public void setClassificationId(String classificationId) {
-        this.classificationId = classificationId;
-    }
-    
     @ApiModelProperty(value = "name", notes = "Display name of the asset.")
     private String name;
 
@@ -84,7 +72,7 @@ public class AssetNodeDto implements Serializable {
     public void setDescription(String description) {
         this.description = description;
     }
-    
+
     @ApiModelProperty(value = "parentId", notes = "Id of the parent element.")
     private UUID parentId;
 

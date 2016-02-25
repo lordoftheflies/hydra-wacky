@@ -8,9 +8,10 @@ package com.ge.current.innovation.infrastructure.dto;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
-import java.util.UUID;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -24,14 +25,14 @@ public class ClassificationDto extends ContentLikeDto {
     public ClassificationDto() {
     }
 
-    public ClassificationDto(UUID id, String name, String description, AttributeDto... attributes) {
+    public ClassificationDto(Long id, String name, String description, AttributeDto... attributes) {
         super(id, name, description);
         this.attributes = Arrays.asList(attributes);
     }
 
-    public ClassificationDto(UUID id, String name, String description, List<AttributeDto> attributes) {
+    public ClassificationDto(Long id, String name, String description, Collection<AttributeDto> attributes) {
         super(id, name, description);
-        this.attributes = attributes;
+        this.attributes = new ArrayList<>(attributes);
     }
     
     

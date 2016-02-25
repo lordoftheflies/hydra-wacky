@@ -5,12 +5,18 @@
  */
 package com.ge.current.innovation.infrastructure.rest;
 
+import com.ge.current.innovation.hydra.storage.dal.AttributeRepository;
+import com.ge.current.innovation.hydra.storage.dal.ClassificationRepository;
+import com.ge.current.innovation.hydra.storage.entities.AttributeEntity;
+import com.ge.current.innovation.hydra.storage.entities.ClassificationEntity;
 import com.ge.current.innovation.infrastructure.dto.AttributeDto;
 import com.ge.current.innovation.infrastructure.dto.ClassificationDto;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,8 +35,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/model")
 public class ModelController {
 
-//    @Autowired
-//    private ModelStore modelStore;
+    @Autowired
+    private ClassificationRepository classificationRepository;
+    @Autowired
+    private AttributeRepository attributeRepository;
+
     @CrossOrigin
     @RequestMapping(
             value = "/classification",
@@ -38,14 +47,20 @@ public class ModelController {
             produces = {MediaType.APPLICATION_JSON_VALUE})
     @ApiOperation(value = "/classification", nickname = "Classifications", notes = "Asset types.")
     public List<ClassificationDto> classifications() {
-        List<ClassificationDto> dto = new ArrayList<>();
-//        modelStore.getMetaEntityDao().findClassifications().forEach(a
-//                -> dto.add(new ClassificationDto(
-//                        a.getId(),
-//                        a.getMd().getLabel(),
-//                        a.getMd().getDescription()
-//                )));
-        return dto;
+        return classificationRepository.findAll().stream().map((ClassificationEntity ce)
+                -> new ClassificationDto(
+                        ce.getId(),
+                        ce.getFriendlyName(),
+                        ce.getDescription(),
+                        attributeRepository.findByClassification(ce.getId()).stream()
+                        .map((AttributeEntity ae) -> new AttributeDto(
+                                ae.getId(),
+                                ae.getUri(),
+                                ae.getFriendlyName(),
+                                ae.getDescription(),
+                                ae.getMeter().getUom()
+                        )).collect(Collectors.toList())
+                )).collect(Collectors.toList());
     }
 
     @CrossOrigin
@@ -54,18 +69,19 @@ public class ModelController {
             method = RequestMethod.GET,
             produces = {MediaType.APPLICATION_JSON_VALUE})
     @ApiOperation(value = "/classification/{id}", nickname = "Classifications", notes = "Asset types.")
-    public ClassificationDto classification(@PathVariable("id") String id) {
-//        MetaEntÍ= modelStore.getMetaEntityDao().findOne(UUID.fromString(id));
-//        ClassificationDto dto = new ClassificationDto(cf.getId(), cf.getMd().getLabel(), cf.getMd().getDescription());
-        ClassificationDto dto = new ClassificationDto();
-//        List<AttributeDto> attributes = new ArrayList<>();
-//        modelStore.getMetaEntityDao().findAttributesOf(UUID.fromString(id)).forEach(a
-//                -> attributes.add(new AttributeDto(a.getId(), 
-//                        a.getMetric().getId(),
-//                        a.getMd().getLabel(), 
-//                        a.getMd().getDescription(), 
-//                        a.getMetric().getDefaultUnitName())));
-//        dto.setAttributes(attributes);
+    public ClassificationDto classification(@PathVariable("id") Long id) {
+        ClassificationEntity ce = classificationRepository.findOne(id);
+        ClassificationDto dto = new ClassificationDto(
+                ce.getId(),
+                ce.getFriendlyName(),
+                ce.getDescription(),
+                attributeRepository.findByClassification(ce.getId()).stream().map((AttributeEntity ae) -> new AttributeDto(
+                ae.getId(),
+                ae.getUri(),
+                ae.getFriendlyName(),
+                ae.getDescription(),
+                ae.getMeter().getUom()
+        )).collect(Collectors.toList()));
         return dto;
     }
 
@@ -76,14 +92,14 @@ public class ModelController {
             produces = {MediaType.APPLICATION_JSON_VALUE})
     @ApiOperation(value = "/attribute", nickname = "Attributes", notes = "Asset attribute types.")
     public List<AttributeDto> attributes() {
-        List<AttributeDto> dto = new ArrayList<>();
-//        modelStore.getMetaEntityDao().findAttributes().forEach(a
-//                -> dto.add(new AttributeDto(a.getId(), 
-//                        a.getMetric().getId(), 
-//                        a.getMd().getLabel(), 
-//                        a.getMd().getDescription(), 
-//                        a.getMetric().getDefaultUnitName())));
-        return dto;
+        return attributeRepository.findAll().stream()
+                .map((AttributeEntity ae) -> new AttributeDto(
+                        ae.getId(),
+                        ae.getUri(),
+                        ae.getFriendlyName(),
+                        ae.getDescription(),
+                        ae.getMeter().getUom()))
+                .collect(Collectors.toList());
     }
 
     @CrossOrigin
@@ -92,14 +108,14 @@ public class ModelController {
             method = RequestMethod.GET,
             produces = {MediaType.APPLICATION_JSON_VALUE})
     @ApiOperation(value = "/attribute/{id}", nickname = "Attribute details", notes = "Asset attribute types details.")
-    public AttributeDto attribute(@PathVariable(value = "id") String id) {
-//        MetaAttributeEntity attribute = modelStore.getMetaEntityDao().findAttribute(UUID.fromString(id));
-//        return new AttributeDto(attribute.getId(), 
-//                attribute.getMetric().getId(), 
-//                attribute.getMd().getLabel(), 
-//                attribute.getMd().getDescription(), 
-//                attribute.getMetric().getDefaultUnitName());
-        return new AttributeDto();
+    public AttributeDto attribute(@PathVariable(value = "id") Long id) {
+        AttributeEntity ae = attributeRepository.findOne(id);
+        return new AttributeDto(
+                ae.getId(),
+                ae.getUri(),
+                ae.getFriendlyName(),
+                ae.getDescription(),
+                ae.getMeter().getUom());
     }
 
     @CrossOrigin
@@ -108,12 +124,15 @@ public class ModelController {
             method = RequestMethod.GET,
             produces = {MediaType.APPLICATION_JSON_VALUE})
     @ApiOperation(value = "/classification/{id}/attributes", nickname = "Attributes of a classification", notes = "Asset attribute types of a classification.")
-    public List<AttributeDto> attributesOfClassification(@PathVariable(value = "id") String id) {
-        List<AttributeDto> dto = new ArrayList<>();
-//        modelStore.getMetaEntityDao().findAttributesOf(UUID.fromString(id)).forEach(attribute
-//                -> dto.add(new AttributeDto(attribute.getId(), attribute.getMetric().getId(), attribute.getMd().getLabel(), attribute.getMd().getDescription(), attribute.getMetric().getDefaultUnitName()))
-//        );
-        return dto;
+    public List<AttributeDto> attributesOfClassification(@PathVariable(value = "id") Long id) {
+        return attributeRepository.findByClassification(id).stream()
+                .map((AttributeEntity ae) -> new AttributeDto(
+                        ae.getId(),
+                        ae.getUri(),
+                        ae.getFriendlyName(),
+                        ae.getDescription(),
+                        ae.getMeter().getUom()))
+                .collect(Collectors.toList());
     }
 
     @CrossOrigin
