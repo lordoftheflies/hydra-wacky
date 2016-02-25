@@ -11,7 +11,6 @@ import com.ge.current.innovation.hydra.storage.dal.AttributeRepository;
 import com.ge.current.innovation.hydra.storage.dal.ClassificationRepository;
 import com.ge.current.innovation.hydra.storage.dal.MeterRepository;
 import com.ge.current.innovation.hydra.storage.entities.AssetEntity;
-import com.ge.current.innovation.hydra.storage.entities.AssetMeterEntity;
 import com.ge.current.innovation.hydra.storage.entities.AttributeEntity;
 import com.ge.current.innovation.hydra.storage.entities.ClassificationEntity;
 import com.ge.current.innovation.hydra.storage.entities.MeterEntity;
