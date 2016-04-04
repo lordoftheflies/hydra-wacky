@@ -1,0 +1,24 @@
+applications:
+- name: hydra-ms-dataingestion
+  memory: 512M
+  instances: 1
+  timeout: 180
+  path: target/hydra-ms-dataingestion-1.0.0.jar
+services:
+      - hydra_rabbitmq
+      - hydra_postgres
+      - rmd_redis_laszlo_hegeds # change this to your redis service instance name
+      - rmd_views_laszlo_hegeds # change this to your view service instance name
+      - rmd_asset_laszlo_hegeds
+      - rmd_time_series_laszlo_hegeds
+env:
+      SPRING_PROFILES_ACTIVE : cloud
+      UAA_SERVER_URL: https://a587e823-6d65-44e9-b50d-a843f1fb3f29.predix-uaa.run.aws-usw02-pr.ice.predix.io # change to your UAA instance url
+      REDIS: redis-5
+      assetUrl: https://predix-asset.run.aws-usw02-pr.ice.predix.io
+      assetZoneId: d7791ae8-0fe0-4f18-9bbe-305588d667c2
+      timeSeriesUrl: https://time-series-store-predix.run.aws-usw02-pr.ice.predix.io/v1/datapoints
+      timeSeriesZoneId: e255e83b-a944-4617-91a9-2dc0facf8fd9
+      predix_oauthClientId : bXZwM19yZWZfYXBwOm12cDNyZWZAcHA=
+      RMD_DATASOURCE_URL: http://rmd-datasource-laszlo-hegeds.run.aws-usw02-pr.ice.predix.io
+      LIVE_DATA_WS_URL: wss://websocket-service-laszlo-hegeds.run.aws-usw02-pr.ice.predix.io/livestream

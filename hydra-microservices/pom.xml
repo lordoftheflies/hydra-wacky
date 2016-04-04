@@ -15,11 +15,12 @@
     <modules>
         <module>hydra-server-boot</module>
         <module>hydra-dataingestion-amqp-producer-wss</module>
-        <module>hydra-dataingestion-amqp-consumer</module>
         <module>hydra-storage-tier-jpa</module>
         <module>hydra-datasource-visualization</module>
         <module>hydra-datasource-infrastructure</module>
         <module>hydra-dataseed</module>
+        <module>hydra-ms-mediator</module>
+        <module>hydra-ms-dataingestion</module>
     </modules>
     
 </project>

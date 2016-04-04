@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<modbusMachineAdapterConfig>
+    <name>Onsite monitor modbus nodes</name>
+    <description>Onsite monitor modbus nodes</description>
+ 
+    <dataNodeConfigs>
+       <channel protocol="TCP_IP" tcpIpAddress="192.168.1.110" tcpIpPort="502">
+		<unit id="1">
+                     <register name="sensor:humidity" dataType="SHORT" address="1" registerType="HOLDING" description="Relative humidity sensor." />
+                     <register name="sensor:temperature" dataType="SHORT" address="2" registerType="HOLDING" description="Environment temperature sensor." />
+                     <register name="sensor:co2" dataType="SHORT" address="3" registerType="HOLDING" description="CO2 gas concentration sensor." />
+                 </unit>		
+        </channel>
+    </dataNodeConfigs>
+ 
+ 	<!-- Both updateInterval and startPointOffset are in seconds. If startPointOffset == -1, it will start immediately -->
+    <dataSubscriptionConfigs>
+        <dataSubscriptionConfig name="sensor_subscription" updateInterval="10" startPointUnit="MINUTES" startPointOffset="-1">
+                 	<nodeName>sensor:humidity</nodeName>
+                     	<nodeName>sensor:temperature</nodeName>
+			<nodeName>sensor:co2</nodeName>
+             </dataSubscriptionConfig>
+    </dataSubscriptionConfigs>
+ 
+ </modbusMachineAdapterConfig>

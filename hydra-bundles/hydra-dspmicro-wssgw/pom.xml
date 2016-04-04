@@ -1,0 +1,112 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.ge.current.innovation</groupId>
+        <artifactId>hydra-bundles</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>hydra-dspmicro-wssgw</artifactId>
+    <version>1.0.0</version>
+    <packaging>bundle</packaging>
+    <name>hydra-dspmicro-wssgw</name>
+
+    <dependencies>
+
+        <!-- Java Websocket API Dependency -->
+        <dependency>
+            <groupId>javax.websocket</groupId>
+            <artifactId>javax.websocket-api</artifactId>
+            <version>1.0</version>
+        </dependency>
+        
+        <!-- OSGi -->
+        <dependency>
+            <groupId>org.osgi</groupId>
+            <artifactId>org.osgi.core</artifactId>
+            <version>${org.osgi.core.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.osgi</groupId>
+            <artifactId>org.osgi.compendium</artifactId>
+            <version>${org.osgi.compendium.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- Logging -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${org.slf4j.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- Predix Machine -->
+        <dependency>
+            <groupId>com.ge.dspmicro</groupId>
+            <artifactId>machinegateway-api</artifactId>
+            <version>${dspmicro.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.ge.dspmicro</groupId>
+            <artifactId>device-common</artifactId>
+            <version>${dspmicro.device-common.project.version}</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <!-- DS Annotation Dependency -->
+        <dependency>
+            <groupId>biz.aQute.bnd</groupId>
+            <artifactId>biz.aQute.bndlib</artifactId>
+            <version>${biz.aQute.bndlib.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>hydra-common</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <extensions>true</extensions>
+                <configuration>
+                    <instructions>
+                        <Bundle-SymbolicName>${project.groupId}.${project.artifactId}</Bundle-SymbolicName>
+                        <Bundle-Version>${project.version}</Bundle-Version>
+                        <Import-Package>
+                            javax.xml.bind,
+                            org.osgi.service.component;version=${import.org.osgi.service.component},
+                            org.osgi.service.cm;version=${import.org.osgi.service.cm},
+                            org.slf4j; version=${import.org.slf4j}; provider=paxlogging,
+                            javax.websocket,
+                            javax.websocket.server,
+                            <!--com.ge.dspmicro.machinegateway.api;version=${import.com.ge.dspmicro.machinegateway.api},-->
+                            <!--com.ge.dspmicro.machinegateway.types;version=${import.com.ge.dspmicro.machinegateway.types},-->
+                            <!--${clover.bundle.import},-->
+                            com.ge.current.innovation,
+                            com.ge.current.innovation.utils,
+                            *
+                        </Import-Package>
+                        <Export-Package>
+                            com.ge.current.innovation.hydra.dspmicro,
+                            com.ge.current.innovation.hydra.dspmicro.gw
+                        </Export-Package>
+                        <_exportcontents></_exportcontents>
+                        <Embed-Dependency></Embed-Dependency>
+                        <Bundle-ClassPath>.</Bundle-ClassPath>
+                        <Service-Component>*</Service-Component>
+                    </instructions>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

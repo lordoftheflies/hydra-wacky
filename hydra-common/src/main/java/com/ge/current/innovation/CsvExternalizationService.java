@@ -8,20 +8,17 @@ package com.ge.current.innovation;
 import com.fasterxml.jackson.databind.MappingIterator;
 import com.fasterxml.jackson.dataformat.csv.CsvMapper;
 import com.fasterxml.jackson.dataformat.csv.CsvSchema;
-import com.ge.current.innovation.DataPoint;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
-import org.springframework.stereotype.Component;
 
 /**
  *
  * @author lordoftheflies
  */
-@Component
+//@Component
 public class CsvExternalizationService {
 
     public <T> List<T> parse(InputStream fis, Class<T> entityType) throws IOException {

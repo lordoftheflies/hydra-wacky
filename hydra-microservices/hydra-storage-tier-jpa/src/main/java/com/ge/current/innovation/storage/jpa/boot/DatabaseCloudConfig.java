@@ -37,6 +37,7 @@ public class DatabaseCloudConfig extends AbstractCloudConfig {
         factory.setJpaVendorAdapter(vendorAdapter);
         factory.setPackagesToScan("com.ge.current.innovation.storage.jpa");
         factory.setDataSource(dataSource);
+        factory.getJpaPropertyMap().put("hibernate.dialect", GeoJsonPostgreSQLDialect.class.getCanonicalName());
         return factory;
     }
 }

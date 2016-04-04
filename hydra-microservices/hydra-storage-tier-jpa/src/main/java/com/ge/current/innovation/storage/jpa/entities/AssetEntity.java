@@ -45,6 +45,16 @@ public class AssetEntity extends DomainEntity {
         this.children = children;
     }
 
+    private String nodeId;
+
+    public String getNodeId() {
+        return nodeId;
+    }
+
+    public void setNodeId(String nodeId) {
+        this.nodeId = nodeId;
+    }
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

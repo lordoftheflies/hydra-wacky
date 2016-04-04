@@ -7,6 +7,8 @@ package com.ge.current.innovation.dataingestion.producer.handlers;
 
 import com.ge.current.innovation.DataPoint;
 import com.ge.current.innovation.dataingestion.producer.service.RabbitMqProducerService;
+import com.ge.current.innovation.utils.JsonUtils;
+import com.rabbitmq.tools.json.JSONUtil;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +30,7 @@ public class DataIngestionMessageHandler extends TextWebSocketHandler {
     @Override
     public void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
         LOG.log(Level.INFO, "Process data: {0}", message.getPayload());
-        rabbitMqProducerService.send(new DataPoint().parse(message.getPayload()));
+        rabbitMqProducerService.send(new JsonUtils().read(DataPoint.class, message.getPayload()));
         session.sendMessage(new TextMessage("INGESTED"));
     }
 }

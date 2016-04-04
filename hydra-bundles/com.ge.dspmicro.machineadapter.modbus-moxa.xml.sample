@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<modbusMachineAdapterConfig>
+    <name>Onsite monitor modbus nodes</name>
+    <description>Onsite monitor modbus nodes</description>
+ 
+    <dataNodeConfigs>
+       <channel protocol="TCP_IP" tcpIpAddress="192.168.88.31" tcpIpPort="502">
+		<unit id="1">
+                     <register name="moxa:actual-phase-voltage" dataType="DOUBLE" address="8192" registerType="HOLDING" description="Actual phase voltage [V]." />
+                 </unit>
+        </channel>
+    </dataNodeConfigs>
+ 
+ 	<!-- Both updateInterval and startPointOffset are in seconds. If startPointOffset == -1, it will start immediately -->
+    <dataSubscriptionConfigs>
+        <dataSubscriptionConfig name="energy_meter_1phase_subscription" updateInterval="10" startPointUnit="MINUTES" startPointOffset="-1">
+                 <nodeName>moxa:actual-phase-voltage</nodeName>
+             </dataSubscriptionConfig>
+        <!--<dataSubscriptionConfig name="energy_meter_3phase_subscription" updateInterval="10" startPointUnit="MINUTES" startPointOffset="-1">
+                 <nodeName>moxa:actual-phase-voltage</nodeName>
+             </dataSubscriptionConfig>-->
+    </dataSubscriptionConfigs>
+ 
+ </modbusMachineAdapterConfig>

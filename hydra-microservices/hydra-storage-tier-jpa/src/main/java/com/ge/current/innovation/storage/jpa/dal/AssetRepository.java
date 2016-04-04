@@ -17,8 +17,11 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface AssetRepository extends CrudRepository<AssetEntity, Long> {
-    
+
+    @Override
+    List<AssetEntity> findAll();
+
     List<AssetEntity> findRoots();
-    
+
     List<AssetEntity> findChildren(@Param("parentId") Long parentId);
 }

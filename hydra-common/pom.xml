@@ -6,7 +6,8 @@
     <groupId>com.ge.current.innovation</groupId>
     <artifactId>hydra-common</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>jar</packaging>
+    <!--<packaging>jar</packaging>-->
+    <packaging>bundle</packaging>
 
     <name>hydra-common</name>
     <description>Demo project for Spring Boot</description>
@@ -57,6 +58,28 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <extensions>true</extensions>
+                <configuration>
+                    <instructions>
+                        <Bundle-SymbolicName>${project.groupId}.${project.artifactId}</Bundle-SymbolicName>
+                        <Bundle-Version>${project.version}</Bundle-Version>
+                        <Import-Package>
+                            *
+                        </Import-Package>
+                        <Export-Package>
+                            com.ge.current.innovation,
+                            com.ge.current.innovation.utils
+                        </Export-Package>
+                        <_exportcontents></_exportcontents>
+                        <Embed-Dependency></Embed-Dependency>
+                        <Bundle-ClassPath>.</Bundle-ClassPath>
+                        <Service-Component>*</Service-Component>
+                    </instructions>
+                </configuration>
             </plugin>
         </plugins>
     </build>

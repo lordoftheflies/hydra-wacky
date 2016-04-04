@@ -48,6 +48,8 @@ public class RabbitLocalConfig implements RabbitListenerConfigurer {
 
     @Value("${rabbitmq.queue.data}")
     private String dataQueue;
+//    @Value("${rabbitmq.queue.data}")
+    private String outputQueue = "stdout";
 
     @Value("${rabbitmq.queue.data}")
     private String alerQueue;
@@ -79,7 +81,7 @@ public class RabbitLocalConfig implements RabbitListenerConfigurer {
     
     @Bean(name = "outputQueue")
     public Queue outputQueue() {
-        return new Queue(dataQueue);
+        return new Queue(outputQueue);
     }
 
     @Bean

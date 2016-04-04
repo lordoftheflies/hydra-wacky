@@ -13,5 +13,6 @@
     
     <modules>
         <module>hydra-river-fountain</module>
+        <module>hydra-dspmicro-wssgw</module>
     </modules>
 </project>

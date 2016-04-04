@@ -48,6 +48,8 @@ public class RabbitCloudConfig extends AbstractCloudConfig implements RabbitList
 
     @Value("${rabbitmq.queue.data}")
     private String alerQueue;
+    
+    private String outputQueue = "stdout";
 
 //    @Value("${rabbitmq.host}")
 //    private String host;
@@ -75,7 +77,7 @@ public class RabbitCloudConfig extends AbstractCloudConfig implements RabbitList
 
     @Bean(name = "outputQueue")
     public Queue outputQueue() {
-        return new Queue(dataQueue);
+        return new Queue(outputQueue);
     }
 
     @Bean

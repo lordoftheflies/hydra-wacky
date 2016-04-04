@@ -33,6 +33,7 @@ public class MessageGatewayListener {
 
 //    public void onMessage(String msg) throws IOException {
     public void onMessage(DataPoint msg) throws IOException {
+//    public void onMessage(Object msg) throws IOException {
 //        DataPoint dp = new JsonUtils().read(DataPoint.class, msg);
         
         LOG.log(Level.INFO, "Ingest data-point to queue[name={0}]: {1}", new Object[]{dataQueue, msg});

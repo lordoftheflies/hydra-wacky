@@ -1,0 +1,61 @@
+# If no permissions.perm file exist, bundle is granted for all permissions
+# i.e. (java.security.AllPermission "*" "*")
+(java.security.AllPermission "*" "*")
+
+
+# List imports as wild card, export services are listed out.
+(org.osgi.framework.PackagePermission "*" "import")
+
+# Registered services
+(org.osgi.framework.ServicePermission "com.ge.dspmicro.machinegateway.api.adapter.IMachineAdapter" "register")
+
+# Get other services.
+(org.osgi.framework.ServicePermission "com.ge.dspmicro.security.admin.api.ISecurityUtils" "get")
+(org.osgi.framework.ServicePermission "org.osgi.service.cm.ConfigurationAdmin" "get")
+
+# Bundle Wiring for pax logging.
+(org.osgi.framework.AdaptPermission "(adaptClass=org.osgi.framework.wiring.BundleRevision)" "adapt")
+
+# Generic stuff
+(org.osgi.service.cm.ConfigurationPermission "*" "configure")
+(org.osgi.service.event.TopicPermission "*" "publish")
+(java.util.PropertyPermission "*" "read")
+(java.lang.RuntimePermission "getClassLoader")
+(java.lang.RuntimePermission "shutdownHooks")
+(java.lang.reflect.ReflectPermission "newProxyInPackage.*")
+(java.lang.RuntimePermission "setContextClassLoader")
+(java.lang.reflect.ReflectPermission "suppressAccessChecks")
+(java.lang.RuntimePermission "accessDeclaredMembers")
+
+(java.net.SocketPermission "*" "connect,resolve")
+
+# List imports as wild card, export services are listed out.
+(org.osgi.framework.PackagePermission "*" "import")
+(org.osgi.framework.PackagePermission "${package}.api" "export")
+
+# Registered services
+(org.osgi.framework.ServicePermission "*" "register")
+
+# Get other services.
+(org.osgi.framework.ServicePermission "javax.websocket.server.ServerContainer" "get")
+
+# Bundle Wiring for pax logging.
+(org.osgi.framework.AdaptPermission "(adaptClass=org.osgi.framework.wiring.BundleRevision)" "adapt")
+
+# Generic stuff
+(org.osgi.service.cm.ConfigurationPermission "*" "configure")
+(org.osgi.service.event.TopicPermission "*" "publish")
+(java.util.PropertyPermission "*" "read")
+(java.lang.RuntimePermission "getClassLoader")
+(java.lang.RuntimePermission "shutdownHooks")
+(java.lang.reflect.ReflectPermission "newProxyInPackage.*")
+(java.lang.RuntimePermission "setContextClassLoader")
+(java.lang.reflect.ReflectPermission "suppressAccessChecks")
+(java.lang.RuntimePermission "accessDeclaredMembers")
+(java.net.SocketPermission "*" "connect,resolve,listen,accept")
+(java.util.PropertyPermission "*" "read,write")
+(java.lang.RuntimePermission "modifyThread")
+(java.lang.RuntimePermission "getStackTrace")
+
+(org.osgi.framework.AdminPermission "*" "context")
+(org.osgi.framework.AdminPermission "(id=93)" "context")
